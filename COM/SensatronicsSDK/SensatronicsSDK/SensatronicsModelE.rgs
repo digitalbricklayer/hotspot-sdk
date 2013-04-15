@@ -1,0 +1,27 @@
+HKCR
+{
+	SensatronicsSDK.SensatronicsModelE.1 = s 'SensatronicsModelE Class'
+	{
+		CLSID = s '{D0C00F42-F307-47E3-A2BE-084E1EB1871E}'
+	}
+	SensatronicsSDK.SensatronicsModelE = s 'SensatronicsModelE Class'
+	{
+		CLSID = s '{D0C00F42-F307-47E3-A2BE-084E1EB1871E}'
+		CurVer = s 'SensatronicsSDK.SensatronicsModelE.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D0C00F42-F307-47E3-A2BE-084E1EB1871E} = s 'SensatronicsModelE Class'
+		{
+			ProgID = s 'SensatronicsSDK.SensatronicsModelE.1'
+			VersionIndependentProgID = s 'SensatronicsSDK.SensatronicsModelE'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{EE4545B3-19C4-4268-B5FC-3D6650161AC5}'
+		}
+	}
+}

@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'SensatronicsSDK'
+		'SensatronicsSDK.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

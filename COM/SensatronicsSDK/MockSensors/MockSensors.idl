@@ -1,0 +1,43 @@
+// MockSensors.idl : IDL source for MockSensors
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (MockSensors.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(944265C7-0F32-4E05-807B-C773DF6184D9),
+	dual,
+	nonextensible,
+	helpstring("IMockSensor Interface"),
+	pointer_default(unique)
+]
+interface IMockSensor : IDispatch{
+	[id(1), helpstring("method AddSensor")] HRESULT AddSensor([in] BSTR SensorId, [in] BSTR ConfigData, [in] BSTR PollData, [in] DATE Time);
+	[id(2), helpstring("method AddSensorPollData")] HRESULT AddSensorPollData([in] BSTR SensorId, [in] BSTR PollData, [in] DATE Time);
+	[id(3), helpstring("method GetSensorPollData"), hidden] HRESULT GetSensorPollData([in] BSTR SensorId, [out,retval] BSTR* PollData);
+	[propget, id(4), helpstring("property PollCount"), hidden] HRESULT PollCount([out, retval] ULONG* pVal);
+	[propput, id(4), helpstring("property PollCount"), hidden] HRESULT PollCount([in] ULONG newVal);
+	[id(6), helpstring("method GetSensorConfigData"), hidden] HRESULT GetSensorConfigData([in] BSTR SensorId, [out,retval] BSTR* ConfigData);
+	[id(7), helpstring("method GetTimeStamp"), hidden] HRESULT GetTimeStamp([out,retval] DATE* TimeStamp);
+};
+[
+	uuid(76601F8E-1BD3-4733-BFE3-29EED23B35B6),
+	version(1.0),
+	helpstring("MockSensors 1.0 Type Library")
+]
+library MockSensorsLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(AA6B2C3E-C8C4-4733-9205-C56FA3B58719),
+		helpstring("MockSensor Class")
+	]
+	coclass MockSensor
+	{
+		[default] interface IMockSensor;
+	};
+};

@@ -1,0 +1,27 @@
+HKCR
+{
+	SensatronicsSDK.DataPoint.1 = s 'DataPoint Class'
+	{
+		CLSID = s '{1A24868D-99B3-466A-905A-485A5DB889B8}'
+	}
+	SensatronicsSDK.DataPoint = s 'DataPoint Class'
+	{
+		CLSID = s '{1A24868D-99B3-466A-905A-485A5DB889B8}'
+		CurVer = s 'SensatronicsSDK.DataPoint.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {1A24868D-99B3-466A-905A-485A5DB889B8} = s 'DataPoint Class'
+		{
+			ProgID = s 'SensatronicsSDK.DataPoint.1'
+			VersionIndependentProgID = s 'SensatronicsSDK.DataPoint'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{EE4545B3-19C4-4268-B5FC-3D6650161AC5}'
+		}
+	}
+}

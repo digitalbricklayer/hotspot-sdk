@@ -1,0 +1,18 @@
+// HotSpotUnitTesterGui.idl : IDL source for HotSpotUnitTesterGui
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (HotSpotUnitTesterGui.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(41973224-69B7-49FA-82D5-2012A719CDAC),
+	version(1.0),
+	helpstring("HotSpotUnitTesterGui 1.0 Type Library")
+]
+library HotSpotUnitTesterGuiLib
+{
+	importlib("stdole2.tlb");
+};

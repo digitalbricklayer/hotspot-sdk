@@ -1,0 +1,27 @@
+HKCR
+{
+	MockSensors.MockSensor.1 = s 'MockSensor Class'
+	{
+		CLSID = s '{AA6B2C3E-C8C4-4733-9205-C56FA3B58719}'
+	}
+	MockSensors.MockSensor = s 'MockSensor Class'
+	{
+		CLSID = s '{AA6B2C3E-C8C4-4733-9205-C56FA3B58719}'
+		CurVer = s 'MockSensors.MockSensor.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {AA6B2C3E-C8C4-4733-9205-C56FA3B58719} = s 'MockSensor Class'
+		{
+			ProgID = s 'MockSensors.MockSensor.1'
+			VersionIndependentProgID = s 'MockSensors.MockSensor'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{76601F8E-1BD3-4733-BFE3-29EED23B35B6}'
+		}
+	}
+}

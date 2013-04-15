@@ -1,0 +1,252 @@
+// SensatronicsSDK.idl : IDL source for SensatronicsSDK
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SensatronicsSDK.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(ACD672B0-42DE-4309-B7EE-60F22A2223B4),
+	dual,
+	nonextensible,
+	helpstring("IDataConnector Interface"),
+	pointer_default(unique)
+]
+interface IDataConnector : IDispatch{	
+	[id(1), helpstring("method RequestModelEXMLData"), hidden] HRESULT RequestModelEXMLData([in] BSTR Id, [in] BSTR Val, [out, retval] LONG* Handler);
+	[id(2), helpstring("method RequestModelFSerialComConfigData"), hidden] HRESULT RequestModelFSerialComConfigData([in] BSTR Id, [in] BSTR ComPort, [out, retval] LONG* Handler);
+	[id(3), helpstring("method RequestModelFSerialComData"), hidden] HRESULT RequestModelFSerialComData([in] BSTR Id, [in] BSTR ComPort, [out, retval] LONG* Handler);
+	[id(4), helpstring("method RequestModelEXMLConfigData"), hidden] HRESULT RequestModelEXMLConfigData([in] BSTR Id, [in] BSTR Val, [out, retval] LONG* Handler);
+	[id(5), helpstring("method RequestModelEHTTPConfigAndData"), hidden] HRESULT RequestModelEHTTPConfigAndData([in] BSTR Id, [in] BSTR IpAddress, [in] BSTR ConfigPath, [in] BSTR DataPath, [in] BSTR Model, [out] LONG* ConfigHandler, [out] LONG* DataHandler);
+};
+[
+	object,
+	uuid(1F23ADF3-2EB3-47FC-B6C5-023D6E982C9B),
+	dual,
+	nonextensible,
+	helpstring("IDataPoint Interface"),
+	pointer_default(unique)
+]
+interface IDataPoint : IDispatch{
+	[propget, id(1), helpstring("property Value")] HRESULT Value([out, retval] VARIANT* pVal);
+	[propput, id(1), helpstring("property Value"), hidden] HRESULT Value([in] VARIANT newVal);
+	[propget, id(2), helpstring("property Unit")] HRESULT Unit([out, retval] BSTR* pVal);
+	[propput, id(2), helpstring("property Unit")] HRESULT Unit([in] BSTR newVal);
+	[propget, id(3), helpstring("property Time")] HRESULT Time([out, retval] DATE* pVal);
+	[propput, id(3), helpstring("property Time"), hidden] HRESULT Time([in] DATE newVal);
+	[propget, id(4), helpstring("property UTCTime"), hidden] HRESULT UTCTime([out, retval] LONGLONG* pVal);
+	[propput, id(4), helpstring("property UTCTime"), hidden] HRESULT UTCTime([in] LONGLONG newVal);
+	[propget, id(5), helpstring("property UTCTimeAsString"), hidden] HRESULT UTCTimeAsString([out, retval] BSTR* pVal);
+	[propput, id(5), helpstring("property UTCTimeAsString"), hidden] HRESULT UTCTimeAsString([in] BSTR newVal);
+};
+[
+	object,
+	uuid(DE068255-D6A3-4F6A-A19A-8626CC1E23FB),
+	dual,
+	nonextensible,
+	helpstring("IProbe Interface"),
+	pointer_default(unique)
+]
+interface IProbe : IDispatch{
+	[propget, id(1), helpstring("property Name")] HRESULT Name([out, retval] BSTR* pVal);
+	[propput, id(1), helpstring("property Name")] HRESULT Name([in] BSTR newVal);
+	[propget, id(2), helpstring("property Type")] HRESULT Type([out, retval] BSTR* pVal);
+	[propput, id(2), helpstring("property Type"), hidden] HRESULT Type([in] BSTR newVal);
+	[propget, id(3), helpstring("property Number")] HRESULT Number([out, retval] SHORT* pVal);
+	[propput, id(3), helpstring("property Number"), hidden] HRESULT Number([in] SHORT newVal);
+	[propget, id(4), helpstring("property Group")] HRESULT Group([out, retval] LONG* pVal);
+	[propput, id(4), helpstring("property Group"), hidden] HRESULT Group([in] LONG newVal);
+	[propget, id(5), helpstring("property MostRecentDataPoint")] HRESULT MostRecentDataPoint([out, retval] IDataPoint** pVal);
+	[id(6), helpstring("method Poll"), hidden] HRESULT Poll([in] IDataPoint* pDataPoint);
+};
+[
+	object,
+	uuid(D9D970B1-1CC5-4455-96B6-8C4ADD87D2B9),
+	dual,
+	nonextensible,
+	helpstring("IProbeCollection Interface"),
+	pointer_default(unique)
+]
+interface IProbeCollection : IDispatch{
+	[propget, id(-4), helpstring("property _NewEnum"), restricted] HRESULT _NewEnum([out, retval] LPUNKNOWN* pVal);
+	[propget, id(1), helpstring("property Count")] HRESULT Count([out, retval] LONG* pVal);
+	[id(2), helpstring("method Add")] HRESULT Add([in] IProbe* pProbe);
+	[id(DISPID_VALUE), helpstring("method Item")] HRESULT Item([in] VARIANT Index, [out,retval] IDispatch** pItem);
+	[id(3), helpstring("method Remove")] HRESULT Remove([in] VARIANT Index);
+	[id(4), helpstring("method Clear")] HRESULT Clear(void);
+	[id(5), helpstring("method ItemByNumber")] HRESULT ItemByNumber([in] VARIANT Index, [out,retval] IDispatch** pItem);
+};
+[
+	object,
+	uuid(C161A699-A412-4800-8BF5-AE49B6361D57),
+	dual,
+	nonextensible,
+	helpstring("ISensatronicsDevice Interface"),
+	pointer_default(unique)
+]
+interface ISensatronicsDevice : IDispatch{
+};
+[
+	object,
+	uuid(BD319538-236E-4209-9CA5-6291CCC56E58),
+	dual,
+	nonextensible,
+	helpstring("ISensatronicsModelE Interface"),
+	pointer_default(unique)
+]
+interface ISensatronicsModelE : IDispatch{
+	[propget, id(1), helpstring("property IpAddress")] HRESULT IpAddress([out, retval] BSTR* pVal);
+	[propput, id(1), helpstring("property IpAddress")] HRESULT IpAddress([in] BSTR newVal);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR* pVal);
+	[propput, id(2), helpstring("property Name")] HRESULT Name([in] BSTR newVal);
+	[propget, id(3), helpstring("property Mask")] HRESULT Mask([out, retval] BSTR* pVal);
+	[propput, id(3), helpstring("property Mask"), hidden] HRESULT Mask([in] BSTR newVal);
+	[propget, id(4), helpstring("property Gateway")] HRESULT Gateway([out, retval] BSTR* pVal);
+	[propput, id(4), helpstring("property Gateway"), hidden] HRESULT Gateway([in] BSTR newVal);
+	[propget, id(5), helpstring("property SerialNumber")] HRESULT SerialNumber([out, retval] BSTR* pVal);
+	[propget, id(6), helpstring("property SnmpTrapIpAddress")] HRESULT SnmpTrapIpAddress([out, retval] BSTR* pVal);
+	[propput, id(6), helpstring("property SnmpTrapIpAddress"), hidden] HRESULT SnmpTrapIpAddress([in] BSTR newVal);
+	[propget, id(7), helpstring("property SnmpWriteCommunityString")] HRESULT SnmpWriteCommunityString([out, retval] BSTR* pVal);
+	[propput, id(7), helpstring("property SnmpWriteCommunityString")] HRESULT SnmpWriteCommunityString([in] BSTR newVal);
+	[propget, id(8), helpstring("property SnmpReadCommunityString")] HRESULT SnmpReadCommunityString([out, retval] BSTR* pVal);
+	[propput, id(8), helpstring("property SnmpReadCommunityString")] HRESULT SnmpReadCommunityString([in] BSTR newVal);
+	[propget, id(9), helpstring("property SoftwareVersion")] HRESULT SoftwareVersion([out, retval] BSTR* pVal);
+	[propput, id(9), helpstring("property SoftwareVersion"), hidden] HRESULT SoftwareVersion([in] BSTR newVal);
+	[propget, id(10), helpstring("property SoftwareReleaseDate")] HRESULT SoftwareReleaseDate([out, retval] BSTR* pVal);
+	[propput, id(10), helpstring("property SoftwareReleaseDate"), hidden] HRESULT SoftwareReleaseDate([in] BSTR newVal);
+	[id(11), helpstring("method Poll")] HRESULT Poll();
+	[propget, id(12), helpstring("property Model")] HRESULT Model([out, retval] BSTR* pVal);
+	[propput, id(12), helpstring("property Model")] HRESULT Model([in] BSTR newVal);
+	[propget, id(13), helpstring("property Probe")] HRESULT Probe([in] SHORT probeId, [out, retval] IDispatch** pVal);
+	[propget, id(14), helpstring("property ProbeCollection")] HRESULT Probes([out, retval] IDispatch** pVal);
+};
+[
+	object,
+	uuid(BD8DC350-050D-4E20-B9CA-66885E12D851),
+	dual,
+	nonextensible,
+	helpstring("ISensatronicsModelF Interface"),
+	pointer_default(unique)
+]
+interface ISensatronicsModelF : IDispatch{
+	[propget, id(1), helpstring("property ComPort")] HRESULT ComPort([out, retval] BSTR* pVal);
+	[propput, id(1), helpstring("property ComPort")] HRESULT ComPort([in] BSTR newVal);
+	[propget, id(2), helpstring("property BatteryStatus")] HRESULT BatteryStatus([out, retval] BSTR* pVal);
+	[propget, id(3), helpstring("property Name")] HRESULT Name([out, retval] BSTR* pVal);
+	[propput, id(3), helpstring("property Name")] HRESULT Name([in] BSTR newVal);
+	[id(5), helpstring("method Poll"), hidden] HRESULT Poll();
+	[propget, id(6), helpstring("property Model")] HRESULT Model([out, retval] BSTR* pVal);
+	[propget, id(7), helpstring("property Probe")] HRESULT Probe([in] SHORT probeId, [out, retval] IDispatch** pVal);
+	[propget, id(8), helpstring("property ProbeCollection")] HRESULT Probes([out, retval] IDispatch** pVal);
+};
+[
+	uuid(EE4545B3-19C4-4268-B5FC-3D6650161AC5),
+	version(1.0),
+	helpstring("SensatronicsSDK 1.0 Type Library")
+]
+library SensatronicsSDKLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(3C73CEAF-C846-4701-B113-68471A2D34A6),
+		helpstring("_IDataConnectorEvents Interface")
+	]
+	dispinterface _IDataConnectorEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(36EFA26D-CC3A-43F7-81AE-E5F016E656DA),
+		helpstring("DataConnector Class")
+	]
+	coclass DataConnector
+	{
+		[default] interface IDataConnector;
+		[default, source] dispinterface _IDataConnectorEvents;
+	};
+	[
+		uuid(00BF7714-BDA8-4FD5-8F36-FA31902F3EAF),
+		helpstring("_IDataPointEvents Interface")
+	]
+	dispinterface _IDataPointEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(1A24868D-99B3-466A-905A-485A5DB889B8),
+		helpstring("DataPoint Class")
+	]
+	coclass DataPoint
+	{
+		[default] interface IDataPoint;
+		[default, source] dispinterface _IDataPointEvents;
+	};
+	[
+		uuid(4363E570-FB21-40C4-8DD5-181D81706101),
+		helpstring("_IProbeEvents Interface")
+	]
+	dispinterface _IProbeEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(0C10DB5E-A4FE-4A07-9273-2BA5D82A632B),
+		helpstring("Probe Class")
+	]
+	coclass Probe
+	{
+		[default] interface IProbe;
+		[default, source] dispinterface _IProbeEvents;
+	};
+	[
+		uuid(AA4B7260-B2F1-4DDF-98EF-EB89785B3D60),
+		helpstring("ProbeCollection Class")
+	]
+	coclass ProbeCollection
+	{
+		[default] interface IProbeCollection;
+	};
+	[
+		uuid(ED3B1F88-E952-4B41-896E-D6E94DF78310),
+		helpstring("_ISensatronicsModelEEvents Interface")
+	]
+	dispinterface _ISensatronicsModelEEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(D0C00F42-F307-47E3-A2BE-084E1EB1871E),
+		helpstring("SensatronicsModelE Class")
+	]
+	coclass SensatronicsModelE
+	{
+		[default] interface ISensatronicsModelE;
+		[default, source] dispinterface _ISensatronicsModelEEvents;
+	};
+	[
+		uuid(2457F1C9-1B32-4B37-A661-041D9D66F770),
+		helpstring("_ISensatronicsModelFEvents Interface")
+	]
+	dispinterface _ISensatronicsModelFEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(1D9215AF-6E08-426F-8095-893DD0D38D60),
+		helpstring("SensatronicsModelF Class")
+	]
+	coclass SensatronicsModelF
+	{
+		[default] interface ISensatronicsModelF;
+		[default, source] dispinterface _ISensatronicsModelFEvents;
+	};
+};

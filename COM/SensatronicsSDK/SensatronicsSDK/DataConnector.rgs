@@ -1,0 +1,27 @@
+HKCR
+{
+	SensatronicsSDK.DataConnector.1 = s 'DataConnector Class'
+	{
+		CLSID = s '{36EFA26D-CC3A-43F7-81AE-E5F016E656DA}'
+	}
+	SensatronicsSDK.DataConnector = s 'DataConnector Class'
+	{
+		CLSID = s '{36EFA26D-CC3A-43F7-81AE-E5F016E656DA}'
+		CurVer = s 'SensatronicsSDK.DataConnector.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {36EFA26D-CC3A-43F7-81AE-E5F016E656DA} = s 'DataConnector Class'
+		{
+			ProgID = s 'SensatronicsSDK.DataConnector.1'
+			VersionIndependentProgID = s 'SensatronicsSDK.DataConnector'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{EE4545B3-19C4-4268-B5FC-3D6650161AC5}'
+		}
+	}
+}
